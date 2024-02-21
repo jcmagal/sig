@@ -1,0 +1,47 @@
+/* Estilo do cabeçalho do modal ajustado */
+.modal-header {
+    background-color: #343a40; /* Cinza escuro suave */
+    color: #fff; /* Texto branco */
+    padding: 10px 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Estilo do botão Salvar mudanças */
+#salvarMudancasBtn {
+    background-color: #28a745; /* Verde Bootstrap */
+    border-color: #28a745; /* Borda do botão */
+}
+
+/* Estilo adicional para o botão Salvar mudanças ao passar o mouse */
+#salvarMudancasBtn:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.btn-close {
+    filter: invert(1) brightness(2);
+}
+
+
+.modal-content {
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+
+
+.modal-dialog {
+    margin-top: 10vh; /* Ajusta a posição vertical do modal */
+}

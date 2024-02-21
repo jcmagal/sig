@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{administrative/fragments/layout}">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="/css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<section class="layout-content" layout:fragment="corpo">
+    <nav class="navbar navbar-expand-md bg-light">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><i class="oi oi-caret-right"></i>
+                    <span>Lista de Funcionários</span></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            DataTable Example
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Cargo</th>
+                    <th>Cidade</th>
+                    <th>Admissão</th>
+                    <th>Exibir</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Cargo</th>
+                    <th>Cidade</th>
+                    <th>Admissão</th>
+                    <th>Exibir</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr th:each="funcionario : ${listaFuncionarios}">
+                    <td th:text="${funcionario.nome}"></td>
+                    <td th:text="${#strings.concat(funcionario.cpf.substring(0, 3), '.', funcionario.cpf.substring(3, 6), '.', funcionario.cpf.substring(6, 9), '-', funcionario.cpf.substring(9))}"></td>
+                    <td th:text="${funcionario.cargo?.nome} ?: 'Sem Cargo'"></td>
+                    <td th:text="${(funcionario.endereco != null) ? ((funcionario.endereco.cidade != null) ? funcionario.endereco.cidade.nome : 'Sem Cidade') : 'Sem Endereço'}"></td>
+                    <td th:text="${#dates.format(funcionario.dataEntrada, 'dd/MM/yyyy')}" ></td>
+                    <td>
+                        <a th:href="@{/administrative/funcionarios/detalhes/{id}(id=${funcionario.id})}" title="Mostrar dados">
+                            <i class="fa-regular fa-eye" style="color: #63E6BE;"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+            crossorigin="anonymous"></script>
+    <script src="/js/datatables-simple-demo.js"></script>
+</section>
+
+</body>
+</html>

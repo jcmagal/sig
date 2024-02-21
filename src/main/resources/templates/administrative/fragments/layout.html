@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Dashboard - Administração</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="/css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Navbar Brand (Lado Esquerdo) -->
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand ps-3" href="home.html">SIG</a>
+            <!-- Sidebar Toggle -->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <ul class="navbar-nav d-md-inline-block form-inline ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user fa-fw"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Configurações</a></li>
+                    <li><a class="dropdown-item" href="#!">Notificações </a></li>
+                    <li><hr class="dropdown-divider"/></li>
+                    <li><a class="dropdown-item" href="/login?logout">Sair <i class="fa-solid fa-right-from-bracket" style="color: #ff0000;"></i></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <!-- Funcionários -->
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                       data-bs-target="#collapseFuncionarios" aria-expanded="false"
+                       aria-controls="collapseFuncionarios">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Funcionários
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseFuncionarios" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/administrative/funcionarios/cadastrar">Cadastrar</a>
+                            <a class="nav-link" href="/administrative/funcionarios/listar">Lista de funcionários</a>
+                        </nav>
+                    </div>
+
+                    <!-- Cargos -->
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCargos"
+                       aria-expanded="false" aria-controls="collapseCargos">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Cargos
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseCargos" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/administrative/cargos/cadastrar">Cadastrar</a>
+                            <a class="nav-link" href="/administrative/cargos/listar">Lista de cargos</a>
+                        </nav>
+                    </div>
+
+                    <!-- Lojas -->
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLojas"
+                       aria-expanded="false" aria-controls="collapseLojas">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Lojas
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLojas" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/administrative/lojas/cadastrar">Cadastrar</a>
+                            <a class="nav-link" href="/administrative/lojas/listar">Lista de lojas</a>
+                        </nav>
+                    </div>
+
+                    <!-- Cidades -->
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCidades"
+                       aria-expanded="false" aria-controls="collapseCidades">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Cidades
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseCidades" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/administrative/cidades/cadastrar">Cadastrar</a>
+                            <a class="nav-link" href="/administrative/cidades/listar">Lista de cidades</a>
+                        </nav>
+                    </div>
+
+                    <!-- Estados -->
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEstados"
+                       aria-expanded="false" aria-controls="collapseEstados">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Estados
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseEstados" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="/administrative/estados/cadastrar">Cadastrar</a>
+                            <a class="nav-link" href="/administrative/estados/listar">Lista de Estados</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                <div class="small">Usuário:</div>
+                <span th:text="${nomeUsuario}"></span>
+            </div>
+
+        </nav>
+    </div>
+
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+
+                <section class="layout-content" layout:fragment="corpo">
+
+                </section>
+            </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">&copy; CONAPE AUTO PECAS/ CNPJ: 01.907.433/0001-98.</div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.2.0/vanilla-masker.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/scripts.js"></script>
+
+</body>
+</html>
